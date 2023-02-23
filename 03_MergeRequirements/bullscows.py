@@ -9,7 +9,9 @@ def print_random_cow_message(message: str) -> str:
 
 
 def ask(prompt: str, valid: list[str] = None) -> str:
-    print_random_cow_message(prompt)
+    with open('jellycube.cow', 'r') as jellycube_file:
+        jellycube = cowsay.read_dot_cow(jellycube_file)
+        print(cowsay.cowsay(prompt, cowfile=jellycube))
     if valid == None:
         return input()
     else:
